@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditEmpresaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditEmpresaLabel_idEmp}" for="idEmp" />
+                    <h:inputText id="idEmp" value="#{empresaController.selected.idEmp}" title="#{bundle.EditEmpresaTitle_idEmp}" required="true" requiredMessage="#{bundle.EditEmpresaRequiredMessage_idEmp}"/>
+                    <h:outputLabel value="#{bundle.EditEmpresaLabel_nomeEmp}" for="nomeEmp" />
+                    <h:inputText id="nomeEmp" value="#{empresaController.selected.nomeEmp}" title="#{bundle.EditEmpresaTitle_nomeEmp}" />
+                    <h:outputLabel value="#{bundle.EditEmpresaLabel_cnpjEmp}" for="cnpjEmp" />
+                    <h:inputText id="cnpjEmp" value="#{empresaController.selected.cnpjEmp}" title="#{bundle.EditEmpresaTitle_cnpjEmp}" />
+                    <h:outputLabel value="#{bundle.EditEmpresaLabel_telefoneEmp}" for="telefoneEmp" />
+                    <h:inputText id="telefoneEmp" value="#{empresaController.selected.telefoneEmp}" title="#{bundle.EditEmpresaTitle_telefoneEmp}" />
+                    <h:outputLabel value="#{bundle.EditEmpresaLabel_enderecoEmp}" for="enderecoEmp" />
+                    <h:inputText id="enderecoEmp" value="#{empresaController.selected.enderecoEmp}" title="#{bundle.EditEmpresaTitle_enderecoEmp}" />
+                    <h:outputLabel value="#{bundle.EditEmpresaLabel_responsavelEmp}" for="responsavelEmp" />
+                    <h:inputText id="responsavelEmp" value="#{empresaController.selected.responsavelEmp}" title="#{bundle.EditEmpresaTitle_responsavelEmp}" />
+                </h:panelGrid>
+                <h:commandLink action="#{empresaController.update}" value="#{bundle.EditEmpresaSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditEmpresaViewLink}"/>
+                <br />
+                <h:commandLink action="#{empresaController.prepareList}" value="#{bundle.EditEmpresaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditEmpresaIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

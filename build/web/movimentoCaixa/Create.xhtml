@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateMovimentoCaixaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateMovimentoCaixaLabel_idMovCaixa}" for="idMovCaixa" />
+                    <h:inputText id="idMovCaixa" value="#{movimentoCaixaController.selected.idMovCaixa}" title="#{bundle.CreateMovimentoCaixaTitle_idMovCaixa}" required="true" requiredMessage="#{bundle.CreateMovimentoCaixaRequiredMessage_idMovCaixa}"/>
+                    <h:outputLabel value="#{bundle.CreateMovimentoCaixaLabel_dataMovCaixa}" for="dataMovCaixa" />
+                    <h:inputText id="dataMovCaixa" value="#{movimentoCaixaController.selected.dataMovCaixa}" title="#{bundle.CreateMovimentoCaixaTitle_dataMovCaixa}" />
+                    <h:outputLabel value="#{bundle.CreateMovimentoCaixaLabel_valorMovCaixa}" for="valorMovCaixa" />
+                    <h:inputText id="valorMovCaixa" value="#{movimentoCaixaController.selected.valorMovCaixa}" title="#{bundle.CreateMovimentoCaixaTitle_valorMovCaixa}" />
+                    <h:outputLabel value="#{bundle.CreateMovimentoCaixaLabel_obsMovCaixa}" for="obsMovCaixa" />
+                    <h:inputText id="obsMovCaixa" value="#{movimentoCaixaController.selected.obsMovCaixa}" title="#{bundle.CreateMovimentoCaixaTitle_obsMovCaixa}" />
+                    <h:outputLabel value="#{bundle.CreateMovimentoCaixaLabel_idTipoMov}" for="idTipoMov" />
+                    <h:selectOneMenu id="idTipoMov" value="#{movimentoCaixaController.selected.idTipoMov}" title="#{bundle.CreateMovimentoCaixaTitle_idTipoMov}" required="true" requiredMessage="#{bundle.CreateMovimentoCaixaRequiredMessage_idTipoMov}">
+                        <f:selectItems value="#{tipoMovimentoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateMovimentoCaixaLabel_idPessoa}" for="idPessoa" />
+                    <h:selectOneMenu id="idPessoa" value="#{movimentoCaixaController.selected.idPessoa}" title="#{bundle.CreateMovimentoCaixaTitle_idPessoa}" required="true" requiredMessage="#{bundle.CreateMovimentoCaixaRequiredMessage_idPessoa}">
+                        <f:selectItems value="#{pessoaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateMovimentoCaixaLabel_idEmp}" for="idEmp" />
+                    <h:selectOneMenu id="idEmp" value="#{movimentoCaixaController.selected.idEmp}" title="#{bundle.CreateMovimentoCaixaTitle_idEmp}" required="true" requiredMessage="#{bundle.CreateMovimentoCaixaRequiredMessage_idEmp}">
+                        <f:selectItems value="#{empresaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{movimentoCaixaController.create}" value="#{bundle.CreateMovimentoCaixaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{movimentoCaixaController.prepareList}" value="#{bundle.CreateMovimentoCaixaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateMovimentoCaixaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

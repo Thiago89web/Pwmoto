@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreatePessoaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreatePessoaLabel_idPessoa}" for="idPessoa" />
+                    <h:inputText id="idPessoa" value="#{pessoaController.selected.idPessoa}" title="#{bundle.CreatePessoaTitle_idPessoa}" required="true" requiredMessage="#{bundle.CreatePessoaRequiredMessage_idPessoa}"/>
+                    <h:outputLabel value="#{bundle.CreatePessoaLabel_nomePessoa}" for="nomePessoa" />
+                    <h:inputText id="nomePessoa" value="#{pessoaController.selected.nomePessoa}" title="#{bundle.CreatePessoaTitle_nomePessoa}" />
+                    <h:outputLabel value="#{bundle.CreatePessoaLabel_cpfPessoa}" for="cpfPessoa" />
+                    <h:inputText id="cpfPessoa" value="#{pessoaController.selected.cpfPessoa}" title="#{bundle.CreatePessoaTitle_cpfPessoa}" />
+                    <h:outputLabel value="#{bundle.CreatePessoaLabel_rgPessoa}" for="rgPessoa" />
+                    <h:inputText id="rgPessoa" value="#{pessoaController.selected.rgPessoa}" title="#{bundle.CreatePessoaTitle_rgPessoa}" />
+                    <h:outputLabel value="#{bundle.CreatePessoaLabel_enderecoPessoa}" for="enderecoPessoa" />
+                    <h:inputText id="enderecoPessoa" value="#{pessoaController.selected.enderecoPessoa}" title="#{bundle.CreatePessoaTitle_enderecoPessoa}" />
+                    <h:outputLabel value="#{bundle.CreatePessoaLabel_telefonePessoa}" for="telefonePessoa" />
+                    <h:inputText id="telefonePessoa" value="#{pessoaController.selected.telefonePessoa}" title="#{bundle.CreatePessoaTitle_telefonePessoa}" />
+                    <h:outputLabel value="#{bundle.CreatePessoaLabel_emailPessoa}" for="emailPessoa" />
+                    <h:inputText id="emailPessoa" value="#{pessoaController.selected.emailPessoa}" title="#{bundle.CreatePessoaTitle_emailPessoa}" />
+                    <h:outputLabel value="#{bundle.CreatePessoaLabel_dataNascPessoa}" for="dataNascPessoa" />
+                    <h:inputText id="dataNascPessoa" value="#{pessoaController.selected.dataNascPessoa}" title="#{bundle.CreatePessoaTitle_dataNascPessoa}" />
+                    <h:outputLabel value="#{bundle.CreatePessoaLabel_numCnhPessoa}" for="numCnhPessoa" />
+                    <h:inputText id="numCnhPessoa" value="#{pessoaController.selected.numCnhPessoa}" title="#{bundle.CreatePessoaTitle_numCnhPessoa}" />
+                    <h:outputLabel value="#{bundle.CreatePessoaLabel_dataValCnhPessoa}" for="dataValCnhPessoa" />
+                    <h:inputText id="dataValCnhPessoa" value="#{pessoaController.selected.dataValCnhPessoa}" title="#{bundle.CreatePessoaTitle_dataValCnhPessoa}" />
+                    <h:outputLabel value="#{bundle.CreatePessoaLabel_idMoto}" for="idMoto" />
+                    <h:inputText id="idMoto" value="#{pessoaController.selected.idMoto}" title="#{bundle.CreatePessoaTitle_idMoto}" required="true" requiredMessage="#{bundle.CreatePessoaRequiredMessage_idMoto}"/>
+                    <h:outputLabel value="#{bundle.CreatePessoaLabel_idEmp}" for="idEmp" />
+                    <h:selectOneMenu id="idEmp" value="#{pessoaController.selected.idEmp}" title="#{bundle.CreatePessoaTitle_idEmp}" required="true" requiredMessage="#{bundle.CreatePessoaRequiredMessage_idEmp}">
+                        <f:selectItems value="#{empresaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{pessoaController.create}" value="#{bundle.CreatePessoaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{pessoaController.prepareList}" value="#{bundle.CreatePessoaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreatePessoaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

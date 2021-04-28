@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditTipoMovimentoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditTipoMovimentoLabel_idTipoMov}" for="idTipoMov" />
+                    <h:inputText id="idTipoMov" value="#{tipoMovimentoController.selected.idTipoMov}" title="#{bundle.EditTipoMovimentoTitle_idTipoMov}" required="true" requiredMessage="#{bundle.EditTipoMovimentoRequiredMessage_idTipoMov}"/>
+                    <h:outputLabel value="#{bundle.EditTipoMovimentoLabel_nomeTipoMov}" for="nomeTipoMov" />
+                    <h:inputText id="nomeTipoMov" value="#{tipoMovimentoController.selected.nomeTipoMov}" title="#{bundle.EditTipoMovimentoTitle_nomeTipoMov}" />
+                    <h:outputLabel value="#{bundle.EditTipoMovimentoLabel_tipoMov}" for="tipoMov" />
+                    <h:inputText id="tipoMov" value="#{tipoMovimentoController.selected.tipoMov}" title="#{bundle.EditTipoMovimentoTitle_tipoMov}" />
+                </h:panelGrid>
+                <h:commandLink action="#{tipoMovimentoController.update}" value="#{bundle.EditTipoMovimentoSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditTipoMovimentoViewLink}"/>
+                <br />
+                <h:commandLink action="#{tipoMovimentoController.prepareList}" value="#{bundle.EditTipoMovimentoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditTipoMovimentoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

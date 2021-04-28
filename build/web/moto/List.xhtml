@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListMotoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListMotoEmpty}" rendered="#{motoController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{motoController.items.rowCount > 0}">
+                    <h:outputText value="#{motoController.pagination.pageFirstItem + 1}..#{motoController.pagination.pageLastItem + 1}/#{motoController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{motoController.previous}" value="#{bundle.Previous} #{motoController.pagination.pageSize}" rendered="#{motoController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{motoController.next}" value="#{bundle.Next} #{motoController.pagination.pageSize}" rendered="#{motoController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{motoController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMotoTitle_idMoto}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idMoto}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMotoTitle_marcaMoto}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.marcaMoto}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMotoTitle_modeloMoto}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.modeloMoto}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMotoTitle_anoMoto}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.anoMoto}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMotoTitle_placaMoto}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.placaMoto}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMotoTitle_status}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.status}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{motoController.prepareView}" value="#{bundle.ListMotoViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{motoController.prepareEdit}" value="#{bundle.ListMotoEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{motoController.destroy}" value="#{bundle.ListMotoDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{motoController.prepareCreate}" value="#{bundle.ListMotoCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListMotoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

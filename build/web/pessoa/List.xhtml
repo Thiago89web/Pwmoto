@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListPessoaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListPessoaEmpty}" rendered="#{pessoaController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{pessoaController.items.rowCount > 0}">
+                    <h:outputText value="#{pessoaController.pagination.pageFirstItem + 1}..#{pessoaController.pagination.pageLastItem + 1}/#{pessoaController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{pessoaController.previous}" value="#{bundle.Previous} #{pessoaController.pagination.pageSize}" rendered="#{pessoaController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{pessoaController.next}" value="#{bundle.Next} #{pessoaController.pagination.pageSize}" rendered="#{pessoaController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{pessoaController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPessoaTitle_idPessoa}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idPessoa}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPessoaTitle_nomePessoa}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nomePessoa}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPessoaTitle_cpfPessoa}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cpfPessoa}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPessoaTitle_rgPessoa}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.rgPessoa}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPessoaTitle_enderecoPessoa}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.enderecoPessoa}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPessoaTitle_telefonePessoa}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.telefonePessoa}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPessoaTitle_emailPessoa}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.emailPessoa}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPessoaTitle_dataNascPessoa}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dataNascPessoa}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPessoaTitle_numCnhPessoa}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.numCnhPessoa}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPessoaTitle_dataValCnhPessoa}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dataValCnhPessoa}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPessoaTitle_idMoto}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idMoto}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPessoaTitle_idEmp}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idEmp}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{pessoaController.prepareView}" value="#{bundle.ListPessoaViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{pessoaController.prepareEdit}" value="#{bundle.ListPessoaEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{pessoaController.destroy}" value="#{bundle.ListPessoaDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{pessoaController.prepareCreate}" value="#{bundle.ListPessoaCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListPessoaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

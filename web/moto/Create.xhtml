@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateMotoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateMotoLabel_idMoto}" for="idMoto" />
+                    <h:inputText id="idMoto" value="#{motoController.selected.idMoto}" title="#{bundle.CreateMotoTitle_idMoto}" required="true" requiredMessage="#{bundle.CreateMotoRequiredMessage_idMoto}"/>
+                    <h:outputLabel value="#{bundle.CreateMotoLabel_marcaMoto}" for="marcaMoto" />
+                    <h:inputText id="marcaMoto" value="#{motoController.selected.marcaMoto}" title="#{bundle.CreateMotoTitle_marcaMoto}" />
+                    <h:outputLabel value="#{bundle.CreateMotoLabel_modeloMoto}" for="modeloMoto" />
+                    <h:inputText id="modeloMoto" value="#{motoController.selected.modeloMoto}" title="#{bundle.CreateMotoTitle_modeloMoto}" />
+                    <h:outputLabel value="#{bundle.CreateMotoLabel_anoMoto}" for="anoMoto" />
+                    <h:inputText id="anoMoto" value="#{motoController.selected.anoMoto}" title="#{bundle.CreateMotoTitle_anoMoto}" />
+                    <h:outputLabel value="#{bundle.CreateMotoLabel_placaMoto}" for="placaMoto" />
+                    <h:inputText id="placaMoto" value="#{motoController.selected.placaMoto}" title="#{bundle.CreateMotoTitle_placaMoto}" />
+                    <h:outputLabel value="#{bundle.CreateMotoLabel_status}" for="status" />
+                    <h:inputText id="status" value="#{motoController.selected.status}" title="#{bundle.CreateMotoTitle_status}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{motoController.create}" value="#{bundle.CreateMotoSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{motoController.prepareList}" value="#{bundle.CreateMotoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateMotoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

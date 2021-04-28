@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListMovimentoCaixaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListMovimentoCaixaEmpty}" rendered="#{movimentoCaixaController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{movimentoCaixaController.items.rowCount > 0}">
+                    <h:outputText value="#{movimentoCaixaController.pagination.pageFirstItem + 1}..#{movimentoCaixaController.pagination.pageLastItem + 1}/#{movimentoCaixaController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{movimentoCaixaController.previous}" value="#{bundle.Previous} #{movimentoCaixaController.pagination.pageSize}" rendered="#{movimentoCaixaController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{movimentoCaixaController.next}" value="#{bundle.Next} #{movimentoCaixaController.pagination.pageSize}" rendered="#{movimentoCaixaController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{movimentoCaixaController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMovimentoCaixaTitle_idMovCaixa}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idMovCaixa}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMovimentoCaixaTitle_dataMovCaixa}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dataMovCaixa}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMovimentoCaixaTitle_valorMovCaixa}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.valorMovCaixa}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMovimentoCaixaTitle_obsMovCaixa}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.obsMovCaixa}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMovimentoCaixaTitle_idTipoMov}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idTipoMov}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMovimentoCaixaTitle_idPessoa}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idPessoa}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMovimentoCaixaTitle_idEmp}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idEmp}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{movimentoCaixaController.prepareView}" value="#{bundle.ListMovimentoCaixaViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{movimentoCaixaController.prepareEdit}" value="#{bundle.ListMovimentoCaixaEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{movimentoCaixaController.destroy}" value="#{bundle.ListMovimentoCaixaDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{movimentoCaixaController.prepareCreate}" value="#{bundle.ListMovimentoCaixaCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListMovimentoCaixaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

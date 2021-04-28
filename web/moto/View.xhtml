@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewMotoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewMotoLabel_idMoto}"/>
+                    <h:outputText value="#{motoController.selected.idMoto}" title="#{bundle.ViewMotoTitle_idMoto}"/>
+                    <h:outputText value="#{bundle.ViewMotoLabel_marcaMoto}"/>
+                    <h:outputText value="#{motoController.selected.marcaMoto}" title="#{bundle.ViewMotoTitle_marcaMoto}"/>
+                    <h:outputText value="#{bundle.ViewMotoLabel_modeloMoto}"/>
+                    <h:outputText value="#{motoController.selected.modeloMoto}" title="#{bundle.ViewMotoTitle_modeloMoto}"/>
+                    <h:outputText value="#{bundle.ViewMotoLabel_anoMoto}"/>
+                    <h:outputText value="#{motoController.selected.anoMoto}" title="#{bundle.ViewMotoTitle_anoMoto}"/>
+                    <h:outputText value="#{bundle.ViewMotoLabel_placaMoto}"/>
+                    <h:outputText value="#{motoController.selected.placaMoto}" title="#{bundle.ViewMotoTitle_placaMoto}"/>
+                    <h:outputText value="#{bundle.ViewMotoLabel_status}"/>
+                    <h:outputText value="#{motoController.selected.status}" title="#{bundle.ViewMotoTitle_status}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{motoController.destroyAndView}" value="#{bundle.ViewMotoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewMotoEditLink}"/>
+                <br />
+                <h:commandLink action="#{motoController.prepareCreate}" value="#{bundle.ViewMotoCreateLink}" />
+                <br />
+                <h:commandLink action="#{motoController.prepareList}" value="#{bundle.ViewMotoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewMotoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

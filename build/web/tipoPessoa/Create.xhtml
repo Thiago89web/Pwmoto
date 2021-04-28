@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateTipoPessoaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateTipoPessoaLabel_idTipoPessoa}" for="idTipoPessoa" />
+                    <h:inputText id="idTipoPessoa" value="#{tipoPessoaController.selected.idTipoPessoa}" title="#{bundle.CreateTipoPessoaTitle_idTipoPessoa}" required="true" requiredMessage="#{bundle.CreateTipoPessoaRequiredMessage_idTipoPessoa}"/>
+                    <h:outputLabel value="#{bundle.CreateTipoPessoaLabel_nomeTipoPessoa}" for="nomeTipoPessoa" />
+                    <h:inputText id="nomeTipoPessoa" value="#{tipoPessoaController.selected.nomeTipoPessoa}" title="#{bundle.CreateTipoPessoaTitle_nomeTipoPessoa}" />
+                    <h:outputLabel value="#{bundle.CreateTipoPessoaLabel_periodoInicio}" for="periodoInicio" />
+                    <h:inputText id="periodoInicio" value="#{tipoPessoaController.selected.periodoInicio}" title="#{bundle.CreateTipoPessoaTitle_periodoInicio}" />
+                    <h:outputLabel value="#{bundle.CreateTipoPessoaLabel_periodoFim}" for="periodoFim" />
+                    <h:inputText id="periodoFim" value="#{tipoPessoaController.selected.periodoFim}" title="#{bundle.CreateTipoPessoaTitle_periodoFim}" />
+                    <h:outputLabel value="#{bundle.CreateTipoPessoaLabel_idPessoa}" for="idPessoa" />
+                    <h:selectOneMenu id="idPessoa" value="#{tipoPessoaController.selected.idPessoa}" title="#{bundle.CreateTipoPessoaTitle_idPessoa}" required="true" requiredMessage="#{bundle.CreateTipoPessoaRequiredMessage_idPessoa}">
+                        <f:selectItems value="#{pessoaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{tipoPessoaController.create}" value="#{bundle.CreateTipoPessoaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{tipoPessoaController.prepareList}" value="#{bundle.CreateTipoPessoaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateTipoPessoaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

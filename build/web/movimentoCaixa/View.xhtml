@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewMovimentoCaixaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewMovimentoCaixaLabel_idMovCaixa}"/>
+                    <h:outputText value="#{movimentoCaixaController.selected.idMovCaixa}" title="#{bundle.ViewMovimentoCaixaTitle_idMovCaixa}"/>
+                    <h:outputText value="#{bundle.ViewMovimentoCaixaLabel_dataMovCaixa}"/>
+                    <h:outputText value="#{movimentoCaixaController.selected.dataMovCaixa}" title="#{bundle.ViewMovimentoCaixaTitle_dataMovCaixa}"/>
+                    <h:outputText value="#{bundle.ViewMovimentoCaixaLabel_valorMovCaixa}"/>
+                    <h:outputText value="#{movimentoCaixaController.selected.valorMovCaixa}" title="#{bundle.ViewMovimentoCaixaTitle_valorMovCaixa}"/>
+                    <h:outputText value="#{bundle.ViewMovimentoCaixaLabel_obsMovCaixa}"/>
+                    <h:outputText value="#{movimentoCaixaController.selected.obsMovCaixa}" title="#{bundle.ViewMovimentoCaixaTitle_obsMovCaixa}"/>
+                    <h:outputText value="#{bundle.ViewMovimentoCaixaLabel_idTipoMov}"/>
+                    <h:outputText value="#{movimentoCaixaController.selected.idTipoMov}" title="#{bundle.ViewMovimentoCaixaTitle_idTipoMov}"/>
+                    <h:outputText value="#{bundle.ViewMovimentoCaixaLabel_idPessoa}"/>
+                    <h:outputText value="#{movimentoCaixaController.selected.idPessoa}" title="#{bundle.ViewMovimentoCaixaTitle_idPessoa}"/>
+                    <h:outputText value="#{bundle.ViewMovimentoCaixaLabel_idEmp}"/>
+                    <h:outputText value="#{movimentoCaixaController.selected.idEmp}" title="#{bundle.ViewMovimentoCaixaTitle_idEmp}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{movimentoCaixaController.destroyAndView}" value="#{bundle.ViewMovimentoCaixaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewMovimentoCaixaEditLink}"/>
+                <br />
+                <h:commandLink action="#{movimentoCaixaController.prepareCreate}" value="#{bundle.ViewMovimentoCaixaCreateLink}" />
+                <br />
+                <h:commandLink action="#{movimentoCaixaController.prepareList}" value="#{bundle.ViewMovimentoCaixaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewMovimentoCaixaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
